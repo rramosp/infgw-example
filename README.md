@@ -30,7 +30,7 @@ k apply -f 03-inferencemodel.yaml
 k apply -f 04-gateway.yaml
 
 k apply -f 05-httroute.yaml
-``
+```
 
 NOTES:
 
