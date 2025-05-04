@@ -137,6 +137,7 @@ a healthy set up would show something like this
 observe
 - all pods are ready and running.
 - there is a pod `-epp` which runs the inference pool.
+- the rest of the pods are serving models.
 - the gateway has a public IP address.
 
 
