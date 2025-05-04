@@ -148,14 +148,14 @@ With the following you should see the pod waiting for and being deployed on a no
     export LLM_POD=pod/vllm-llama3-8b-instruct-7cfc9f4585-648d6
     k describe ${LLM_POD}
 
-Watch a pod load the model and start serving it
+Once the pod is assigned to a node by GLE, watch it loading the model and start serving it
 
     k logs -f ${LLM_POD}
 
 
 **Interact directly with serving pods**
 
-select any pod, port-forward to it and make a request for metrics and one actually calling the llm
+select any pod, port-forward to it and make a request for metrics, you should see a bunch of metrics and number. This actually does not call the llm, it is a health check.
 
     k port-forward ${LLM_POD} 8000:8000
 
@@ -204,7 +204,7 @@ this request does not go through the LLM routing logic, so with this you check t
 
 **Monitor inference pool**
 
-here you should see the actual routing to specific models (the `-epp` pod)
+here you should see the actual routing to specific models (the `-epp` pod) when doing llm requests through the gateway (with `v1/completions` endpoint).
 
     export INFPOOL_POD=pod/vllm-llama3-8b-instruct-epp-59db965c45-h9qkj
     k logs -f ${INFPOOL_POD}
@@ -213,6 +213,7 @@ here you should see the actual routing to specific models (the `-epp` pod)
 
 open three shells in different windows
 
+- start with a single llm pod (set `replicas` to 1 in `02-deployment.yaml`)
 - one to monitor the llm serving pod `k logs -f ${LLM_POD}`
 - one to monitor the inference pool pod `k logs -f ${INFPOOL_POD}`
 - one to send `curl` requests to the gateway and the llm serving pod.
