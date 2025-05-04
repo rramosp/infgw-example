@@ -31,7 +31,7 @@ gcloud compute networks subnets create xproxy-subnet \
     --range=10.1.1.0/24
 ```
 
-enable the Network Services API https://console.cloud.google.com/apis/api/networkservices.googleapis.com/
+Enable the Network Services API https://console.cloud.google.com/apis/api/networkservices.googleapis.com/
 
 Create cluster with autopilot
 ```
