@@ -11,7 +11,7 @@ This is a simplified version of the instructions under [Serve an LLM with GKE In
 
 Check you have a VPC named `default`. If not, create it with subnets in all regions (this usually happens automatically when creating a VPC)
 
-Set env vars
+Set env vars with your choices of project, location and cluster name
 
 ```
 export PROJECT_ID=genai-dev-454121
