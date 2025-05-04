@@ -1,9 +1,9 @@
 apiVersion: inference.networking.x-k8s.io/v1alpha2
 kind: InferenceModel
 metadata:
-  name: inferencemodel-sample
+  name: xllama3
 spec:
-  modelName: llama3
+  modelName: meta-llama/Meta-Llama-3-8B
   criticality: Standard
   poolRef:
     name: vllm-llama3-8b-instruct

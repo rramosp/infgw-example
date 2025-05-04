@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: vllm-llama3-8b-instruct
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: vllm-llama3-8b-instruct
@@ -153,7 +153,23 @@ spec:
             medium: Memory
         - name: adapters
           emptyDir: {}
+
 ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: vllm-llama3-8b-adapters
+# data:
+#   configmap.yaml: |
+#       basicllama:
+#         name: vllm-llama3.1-8b-instruct
+#         port: 8000
+#         defaultBaseModel: meta-llama/Llama-3.1-8B-Instruct
+#         ensureExist:
+#           models:
+#           - id: llamachat
+# #            source: Kawon/llama3.1-food-finetune_v14_r8
+# ---
 kind: HealthCheckPolicy
 apiVersion: networking.gke.io/v1
 metadata:
