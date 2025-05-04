@@ -148,7 +148,7 @@ With the following you should see the pod waiting for and being deployed on a no
     export LLM_POD=pod/vllm-llama3-8b-instruct-7cfc9f4585-648d6
     k describe ${LLM_POD}
 
-Once the pod is assigned to a node by GLE, watch it loading the model and start serving it
+Once the pod is assigned to a node by GKE, watch it loading the model and start serving it
 
     k logs -f ${LLM_POD}
 
@@ -215,7 +215,7 @@ starting configuration (as in `02-deployment.yaml`):
 
 - start with a single llm pod (set `replicas` to 1 in `02-deployment.yaml`). 
 - don't use LoRA adapters, just a single model.
-- use easily obtainable machines.
+- use easily obtainable machines, in `cloud.google.com/gke-accelerator` under `nodeSelector`.
 
 open three shells in different windows
 
