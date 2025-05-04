@@ -211,11 +211,18 @@ here you should see the actual routing to specific models (the `-epp` pod) when 
 
 **Suggested troubleshooting scenario**
 
+starting configuration (as in `02-deployment.yaml`):
+
+- start with a single llm pod (set `replicas` to 1 in `02-deployment.yaml`). 
+- don't use LoRA adapters, just a single model.
+- use easily obtainable machines.
+
 open three shells in different windows
 
-- start with a single llm pod (set `replicas` to 1 in `02-deployment.yaml`)
 - one to monitor the llm serving pod `k logs -f ${LLM_POD}`
 - one to monitor the inference pool pod `k logs -f ${INFPOOL_POD}`
 - one to send `curl` requests to the gateway and the llm serving pod.
 
-you should see the requests getting to the inference pool and then to an llm pod.
+you should see the requests getting to the inference pool and then to the llm pod.
+
+then you can redeploy adding complexity gradually (LoRA, different models, more powerful hardware, etc.)
