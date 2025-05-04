@@ -21,7 +21,7 @@ alias k=kubectl
 ```
 
 
-Create a proxy subnet in the `default` VPC. This is required by GKE gateways (see [this](https://cloud.google.com/load-balancing/docs/proxy-only-subnets#proxy_only_subnet_create))
+Create a proxy subnet in the `default` VPC. This is required by GKE gateways (see [this](https://cloud.google.com/load-balancing/docs/proxy-only-subnets#proxy_only_subnet_create)). `xproxy-subnet` is just the name we choose to give it.
 ```
 gcloud compute networks subnets create xproxy-subnet \
     --purpose=REGIONAL_MANAGED_PROXY \
